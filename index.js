@@ -1,3 +1,5 @@
+"use strict";
+
 function reverseStr(str) {
   var listOfChars = str.split("");
   var reverseListOfChars = listOfChars.reverse();
@@ -44,7 +46,7 @@ function checkPalindromeForAllDateFormats(date) {
   var flag = false;
 
   for (var i = 0; i < listOfPossibilitiesOfPalindromes.length; i++) {
-    if (isPalindrome(listOfPossibilitiesOfPalindromes.length[i])) {
+    if (isPalindrome(listOfPossibilitiesOfPalindromes[i])) {
       flag = true;
       break;
     }
@@ -93,12 +95,7 @@ function getNextDate(date) {
     month = 1;
     year++;
   }
-  return;
-  {
-    day: day;
-    month: month;
-    year: year;
-  }
+  return { day: day, month: month, year: year };
 }
 
 function gettingNextPalindromeDate(date) {
@@ -123,7 +120,7 @@ var resultRef = document.querySelector("#result");
 function clickHandler() {
   var bdayStr = dateInputRef.value;
 
-  if (bdayStr != "") {
+  if (bdayStr !== "") {
     var listOfDate = bdayStr.split("-");
     var date = {
       day: Number(listOfDate[2]),
@@ -142,3 +139,13 @@ function clickHandler() {
 }
 
 showBtnRef.addEventListener("click", clickHandler);
+
+var bdayStr = "1996-04-16";
+var listOfDate = bdayStr.split("-");
+var date = {
+  day: Number(listOfDate[2]),
+  month: Number(listOfDate[1]),
+  year: Number(listOfDate[0]),
+};
+var [ctr, nextDate] = gettingNextPalindromeDate(date);
+console.log(nextDate);
